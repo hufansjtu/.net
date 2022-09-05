@@ -8,13 +8,16 @@
     <title></title>
 </head>
     <frameset rows="120,*" frameborder="no" border="0">
-        <frame name="top" src="top.aspx" border="0" scrolling="no">
-
-        </frame>
+        <frame name="top" src="top.aspx" border="0" scrolling="no"></frame>
+        <frameset cols="170,*" frameborder="no" border="0">
+            <frame name="left" src="left.aspx" border="0" scrolling="no"></frame>
+            <frame name="main" src="center.aspx" border="0" scrolling="no"></frame>
+        </frameset>
     </frameset>
 <body>
     <form id="form1" runat="server">
         <div>
+
         </div>
     </form>
 </body>

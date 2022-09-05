@@ -22,7 +22,7 @@ table th{
     }
     .nenudiv{
         border-bottom: 1px solid #1096bc;
-        padding: 5px 0 5px 2px;
+        padding: 5px 0 5px 20px;
 
     }
 .menua {
@@ -39,11 +39,18 @@ table th{
         background: #1096bc;
         border-color: #1096bc;
     }
-    .button1{
-        border: 0;
-        background:#008080;
-        height: 30px;
-        width: 100px;
-        color: #fff;
-    }
+.button1{
+    border: 0;
+    background:#008080;
+    height: 30px;
+    width: 100px;
+    color: #fff;
+}
+.button2 {
+    border: 0;
+    background: #ff8000;
+    height: 30px;
+    width: 100px;
+    color: #fff;
+}
 

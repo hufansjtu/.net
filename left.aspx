@@ -6,10 +6,12 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <link type="text/css" href="tb.css" rel="stylesheet" />
 </head>
-<body>
+<body style="background:#f0f0f0">
     <form id="form1" runat="server">
-        <div>
+        <div class="nenudiv">
+            <a target="main" class="menua" href="zhanghu.aspx">表具报警</a>
         </div>
     </form>
 </body>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="center.aspx.cs" Inherits="center" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            欢迎使用IOT系统
+            denglu
         </div>
     </form>
 </body>

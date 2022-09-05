@@ -11,7 +11,8 @@ using System.Data.SqlClient;
 /// </summary>
 public class dbhelp
 {
-    public static string constr = @"server=10.122.37.185";
+    public static string constr = @"server=10.122.37.15;uid=sa;pwd=1qaz!QAZ2wsx;database=IOT_test";
+    public static string constr1 = @"server=10.122.37.15;uid=sa;pwd=1qaz!QAZ2wsx;database=DWIOT";
     public dbhelp()
     {
         //
@@ -44,7 +45,7 @@ public class dbhelp
     public static DataTable getdt(string sql)
     {
         DataTable dt = new DataTable();
-        SqlConnection con = new SqlConnection(constr);
+        SqlConnection con = new SqlConnection(constr1);
         SqlCommand cmd = new SqlCommand(sql, con);
         SqlDataAdapter da = new SqlDataAdapter(cmd);
         try
@@ -65,7 +66,7 @@ public class dbhelp
         }
         return dt;
     }
-    public static bool sacesql(string sql)
+    public static bool savesql(string sql)
     {
         bool ifsuccess = false;
         SqlConnection con = new SqlConnection(constr);
