@@ -42,6 +42,31 @@ public class dbhelp
         }
         return ds;
     }
+
+    public static DataSet alertinfo(string sql)
+    {
+        DataSet ds = new DataSet();
+        SqlConnection con = new SqlConnection(constr1);
+        SqlCommand cmd = new SqlCommand(sql, con);
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        try
+        {
+            con.Open();
+            da.Fill(ds);
+            con.Close();
+            con.Dispose();//注销
+            cmd.Dispose();
+            da.Dispose();
+        }
+        catch
+        {
+            con.Close();
+            con.Dispose();//注销
+            cmd.Dispose();
+            da.Dispose();
+        }
+        return ds;
+    }
     public static DataTable getdt(string sql)
     {
         DataTable dt = new DataTable();

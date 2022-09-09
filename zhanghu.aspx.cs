@@ -6,8 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
-//using System.Data.SqlXml;
-//using Microsoft.ApplicationBlocks.Data;
 
 public partial class zhanghu : System.Web.UI.Page
 {
@@ -40,13 +38,14 @@ public partial class zhanghu : System.Web.UI.Page
     //新增数据
     protected void Button1_Click(object sender, EventArgs e)
     {
-        //string sql = "insert into IOT_test.dbo.td_alert_config(equipment_code,equipment_type,alert_time,notice_user,upper_limit,lower_limit) values('" + this.TextBox1.Text+ "','" + this.TextBox2.Text + "','" + this.TextBox3.Text + "','"+ this.TextBox4.Text + "','"+this.TextBox5.Text + "','"+ this.TextBox6.Text+"')";
-        if(this.HiddenField1.Value != "")
+        string equipment_name = this.TextBox7.SelectedValue;
+        string sql = "insert into IOT_test.dbo.td_alert_config(equipment_code,equipment_name,equipment_type,alert_time,notice_user,upper_limit,lower_limit) values('" + this.TextBox1.Text + "',N'"  + this.TextBox7.Text + "','" + this.TextBox2.Text + "','" + this.TextBox3.Text + "','" + this.TextBox4.Text + "','" + this.TextBox5.Text + "','" + this.TextBox6.Text + "')";
+        if (this.HiddenField1.Value != "")
         {
-            //sql = "update td_alert_config set equipment_code='" + this.TextBox1.Text+ "',equipment_type='" + this.TextBox2.Text + "',alert_time='" + this.TextBox3.Text + "',notice_user='" + this.TextBox4.Text + "',upper_limit='" + this.TextBox5.Text + "',lower_limit='" + this.TextBox6.Text + "' where id ='" + this.HiddenField1.Value+"' ";
+            sql = "update td_alert_config set equipment_code='" + this.TextBox1.Text + "',equipment_name=N'" + this.TextBox7.Text + "',equipment_type='" + this.TextBox2.Text + "',alert_time='" + this.TextBox3.Text + "',notice_user='" + this.TextBox4.Text + "',upper_limit='" + this.TextBox5.Text + "',lower_limit='" + this.TextBox6.Text + "' where id ='" + this.HiddenField1.Value + "' ";
         }
         bool k = true;
-            //dbhelp.savesql(sql);
+        dbhelp.savesql(sql);
         if (k)
         {
             dbhelp.alert("操作成功");
@@ -69,12 +68,13 @@ public partial class zhanghu : System.Web.UI.Page
     {
         this.Button1.Text = "修改";
         this.HiddenField1.Value = GridView1.Rows[e.NewSelectedIndex].Cells[2].Text;
-        //this.TextBox1.Text = GridView1.Rows[e.NewSelectedIndex].Cells[3].Text;
-        this.TextBox2.Text = GridView1.Rows[e.NewSelectedIndex].Cells[4].Text;
-        this.TextBox3.Text = GridView1.Rows[e.NewSelectedIndex].Cells[5].Text;
-        this.TextBox4.Text = GridView1.Rows[e.NewSelectedIndex].Cells[6].Text;
-        this.TextBox5.Text = GridView1.Rows[e.NewSelectedIndex].Cells[7].Text;
-        this.TextBox6.Text = GridView1.Rows[e.NewSelectedIndex].Cells[8].Text;
+        this.TextBox1.Text = GridView1.Rows[e.NewSelectedIndex].Cells[3].Text;
+        this.TextBox7.Text = GridView1.Rows[e.NewSelectedIndex].Cells[4].Text;
+        this.TextBox2.Text = GridView1.Rows[e.NewSelectedIndex].Cells[5].Text;
+        this.TextBox3.Text = GridView1.Rows[e.NewSelectedIndex].Cells[6].Text;
+        this.TextBox4.Text = GridView1.Rows[e.NewSelectedIndex].Cells[7].Text;
+        this.TextBox5.Text = GridView1.Rows[e.NewSelectedIndex].Cells[8].Text;
+        this.TextBox6.Text = GridView1.Rows[e.NewSelectedIndex].Cells[9].Text;
         //dbhelp.alert(GridView1.Rows[e.NewSelectedIndex].Cells[3].Text);
     }
     //删除数据
@@ -95,33 +95,54 @@ public partial class zhanghu : System.Web.UI.Page
 
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        //string sql = "select equipment_id,equipment_code from DWIOT.iot_ems_analytics.te_ems_datalake_eqp";
-        //DataTable tabs = dbhelp.getdt(sql);
-        ////DataSet dt = dbhelp.getds(sql);
-        ////this.GridView1.DataSource = dt;
-        //if(tabs.Rows.Count > 0)
-        //{
-        //    this.TextBox1.DataSource = tabs;
-        //    this.TextBox1.DataValueField = "equipment_id";
-        //    this.TextBox1.DataTextField = "equipment_code";
-        //    this.TextBox1.DataBind();
+        string sql = "select equipment_id,equipment_code from DWIOT.iot_ems_analytics.te_ems_datalake_eqp";
+        DataTable tabs = dbhelp.getdt(sql);
+        //DataSet dt = dbhelp.getds(sql);
+        //this.GridView1.DataSource = dt;
+        if (tabs.Rows.Count > 0)
+        {
+            //this.TextBox1.DataSource = tabs;
+            //this.TextBox1.DataValueField = "equipment_id";
+            //this.TextBox1.DataTextField = "equipment_code";
+            //this.TextBox1.DataBind();
 
-        //}
+        }
         if (!IsPostBack)
         {
-            string sql = "select equipment_id,equipment_code from DWIOT.iot_ems_analytics.te_ems_datalake_eqp";
-            DataTable tabs = dbhelp.getdt(sql);
-            //DataSet dt = dbhelp.getds(sql);
-            //this.GridView1.DataSource = dt;
-            if (tabs.Rows.Count > 0)
-            {
-                this.DropDownList1.DataSource = tabs;
-                this.DropDownList1.DataValueField = "equipment_id";
-                this.DropDownList1.DataTextField = "equipment_code";
-                this.DropDownList1.DataBind();
-                this.DropDownList1.Items.Insert(0, new ListItem("全部", "0"));
-            }
+            //string sql = "select equipment_id,equipment_code from DWIOT.iot_ems_analytics.te_ems_datalake_eqp";
+            //DataTable tabs = dbhelp.getdt(sql);
+            ////DataSet dt = dbhelp.getds(sql);
+            ////this.GridView1.DataSource = dt;
+            //if (tabs.Rows.Count > 0)
+            //{
+            //    this.DropDownList1.DataSource = tabs;
+            //    this.DropDownList1.DataValueField = "equipment_id";
+            //    this.DropDownList1.DataTextField = "equipment_code";
+            //    this.DropDownList1.DataBind();
+            //    this.DropDownList1.Items.Insert(0, new ListItem("全部", "0"));
+            //}
          
         }
+    }
+
+    protected void Bind_equipment_code(object sender, EventArgs e)
+    {
+        string equipment_code = "";
+        string sql = "SELECT equipment_name,equipment_code FROM iot_ems_analytics.td_ems_equipment"; //where dw_is_active = '1' and equipment_name = '" + this.TextBox7.SelectedValue+"'";
+        //DataSet ds = dbhelp.alertinfo(sql);
+        DataTable tabs = dbhelp.getdt(sql);
+        if (tabs.Rows.Count == 0)
+        {
+        }
+        for(int i = 0; i < tabs.Rows.Count; i++)
+        {
+            if(tabs.Rows[i][0].ToString() == this.TextBox7.SelectedValue)
+            {
+                equipment_code = tabs.Rows[i][1].ToString();
+            }
+        }
+        //equipment_name = tabs.Rows[0][0].ToString();
+        this.TextBox1.Text = equipment_code;
+        //string equipment_name = this.TextBox7.SelectedValue;
     }
 }

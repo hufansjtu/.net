@@ -15,24 +15,22 @@
             <hr/>
             <table>
                 <tr>
-                    <td>表具编号：</td>
+                    <td>表具名称：</td>
                     <td>
-                        <asp:DropDownList ID="DropDownList1" Width="160px" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-                        </asp:DropDownList>
-                        <%--<asp:DropDownList ID="DropDownList1" runat="server" 
-                    AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" DataSourceID="SqlDataSource2">
-                    <asp:ListItem>1</asp:ListItem>
-                    <asp:ListItem>2</asp:ListItem>
-                    <asp:ListItem>3</asp:ListItem>
-                </asp:DropDownList>
-
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DWIOTConnectionString %>" SelectCommand="SELECT [equipment_code] FROM [te_ems_datalake_eqp]"></asp:SqlDataSource>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>--%>
-                        <asp:HiddenField ID="HiddenField1" runat="server" />
-                        <asp:TextBox ID="TextBox1" runat="server"  OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+                        <asp:DropDownList ID="TextBox7" Width="170px" runat="server" OnSelectedIndexChanged="Bind_equipment_code"  AutoPostBack="true"  DataSourceID="SqlDataSource2" DataTextField="equipment_name" DataValueField="equipment_name"></asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DWIOTConnectionString %>" SelectCommand="SELECT distinct equipment_name FROM iot_ems_analytics.td_ems_equipment where dw_is_active = '1' "></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
+                    <td>表具编号：</td>
+                    <td >
+                        <asp:TextBox ID="TextBox1" runat="server" ReadOnly="true"></asp:TextBox>
+                        <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DWIOTConnectionString %>" SelectCommand="SELECT distinct equipment_code FROM iot_ems_analytics.td_ems_equipment where dw_is_active = '1' "></asp:SqlDataSource>--%>
+                        <asp:HiddenField ID="HiddenField1" runat="server" />
+                       
+                    </td>
+                </tr>
+                <tr> 
                     <td>表具类型：</td>
                     <td>
                         <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
